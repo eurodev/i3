@@ -37,7 +37,7 @@ assign [title="gedit"]            → $w5
 assign [title="Skype"]            → $w6
 assign [class="Pidgin"]           → $w1
 assign [class="Terminator"]       → $w2
-assign [class="Google-chrome"]    → $w3
+assign [class="google-chrome"]    → $w3
 assign [class="Nemo"]             → $w5
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -227,17 +227,12 @@ bindsym Print exec screenshot.sh
 
 # AutoStart applications
 #
-# setting wallpaper
-exec --no-startup-id xsetroot -solid "#000000"
 
 # network manager applet
 exec --no-startup-id nm-applet
 
 # gnome-sound-applet
 exec --no-startup-id gnome-sound-applet
-
-# Configure dual screen
-exec --no-startup-id switch-display.sh
 
 # Launch mintupdate-launcher applet/daemon
 exec --no-startup-id mintupdate-launcher
@@ -260,4 +255,13 @@ exec pidgin &
 exec skype &
 #exec nemo-no-desktop.sh &
 exec gedit &
-exec (sleep 180 && dropbox start) &
+
+# Dropbox daemon
+exec --no-startup-id dropbox start
+
+# Configure dual screen
+exec --no-startup-id /home/trunks/devel/bin/switch-display.sh
+
+# setting wallpaper
+#exec --no-startup-id xsetroot -solid "#000000"
+exec --no-startup-id nitrogen --set-tiled /home/trunks/Imágenes/Wallpapers/mariomaker_1920x1080.jpg
