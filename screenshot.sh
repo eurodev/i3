@@ -17,20 +17,23 @@ function check() {
 
     if [ -z "${DROPBOX}" ]
     then
-      echo -e "dropbox is not installed or in your path. Please, consider to install it in order to use this script"
-      echo
+        echo -e "dropbox is not installed or in your path. Please, consider to install it in order to use this script"
+        echo
+        exit 2
     fi
 
     if [ -z "${ZENITY}" ]
     then
-      echo -e "zenity is not installed or in your path. Please, consider to install it in order to use this script"
-      echo
+        echo -e "zenity is not installed or in your path. Please, consider to install it in order to use this script"
+        echo
+        exit 2
     fi
 
     if [ -z "${SCROT}" ]
     then
-      echo -e "scrot is not installed or in your path. Please, consider to install it in order to use this script"
-      echo
+        echo -e "scrot is not installed or in your path. Please, consider to install it in order to use this script"
+        echo
+        exit 2
     fi
 
     DROPBOX_STATUS=$(${DROPBOX} status)
