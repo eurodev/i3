@@ -257,12 +257,14 @@ exec gedit &
 # Dropbox daemon
 exec --no-startup-id dropbox start
 
-# Nemo desktop
-exec --no-startup-id nemo --no-desktop
-
 # Configure dual screen
 exec --no-startup-id ~/.i3/switch-display.sh
 
+## Delayed AutoStart applications ##
+
+# Nemo desktop
+exec --no-startup-id (sleep 2 && nemo --no-desktop) &
+
 # setting wallpaper
 #exec --no-startup-id xsetroot -solid "#000000"
-exec --no-startup-id nitrogen --set-tiled /home/trunks/Imágenes/Wallpapers/mariomaker_1920x1080.jpg
+exec --no-startup-id (sleep 2 && nitrogen --set-tiled /home/trunks/Imágenes/Wallpapers/mariomaker_1920x1080.jpg) &
