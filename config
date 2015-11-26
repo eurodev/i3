@@ -13,7 +13,7 @@ set $w3 3: www
 set $w4 4: irc
 set $w5 5: files
 set $w6 6: skype
-set $w7 7
+set $w7 7: fullscreen
 set $w8 8
 set $w9 9
 set $w10 10
@@ -38,6 +38,7 @@ assign [title="Skype"]            → $w6
 assign [class="Pidgin"]           → $w1
 assign [class="Terminator"]       → $w2
 assign [class="google-chrome"]    → $w3
+assign [class="Navigator"]        → $w3
 assign [class="Nemo"]             → $w5
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -199,9 +200,9 @@ bindsym XF86MonBrightnessUp exec --no-startup-id /usr/bin/xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec --no-startup-id /usr/bin/xbacklight -dec 5
 
 # power/screen control
-bindsym XF86ScreenSaver exec --no-startup-id i3exit lock
-bindsym XF86Suspend exec --no-startup-id i3exit hibernate
-bindsym XF86Sleep exec --no-startup-id i3exit suspend
+bindsym XF86ScreenSaver exec --no-startup-id ~/.i3/i3exit lock
+bindsym XF86Suspend exec --no-startup-id ~/.i3/i3exit hibernate
+bindsym XF86Sleep exec --no-startup-id ~/.i3/i3exit suspend
 
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -209,12 +210,12 @@ bindsym XF86Sleep exec --no-startup-id i3exit suspend
 # System menu
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id ~/.i3/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id ~/.i3/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id ~/.i3/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.i3/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.i3/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/.i3/i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
