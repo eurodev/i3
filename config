@@ -231,8 +231,8 @@ bindsym Print exec ~/.i3/screenshot.sh
 # network manager applet
 exec --no-startup-id nm-applet
 
-# gnome-sound-applet
-exec --no-startup-id gnome-sound-applet
+# cinnamon-sound-applet
+exec --no-startup-id cinnamon-sound-applet
 
 # Launch mintupdate-launcher applet/daemon
 exec --no-startup-id mintupdate-launcher
