@@ -228,9 +228,6 @@ bindsym Print exec ~/.i3/screenshot.sh
 
 ## AutoStart applications  ##
 #
-# gnome-settings-daemon (manages energy settings, applies font-aliasing, ...)
-exec --no-startup-id gnome-settings-daemon
-
 # network manager applet
 exec --no-startup-id nm-applet
 
