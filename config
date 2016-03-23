@@ -41,6 +41,8 @@ assign [class="google-chrome"]    → $w3
 assign [class="Navigator"]        → $w3
 assign [class="Nemo"]             → $w5
 
+for_window [class="Eog"] floating enable
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
