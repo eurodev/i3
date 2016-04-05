@@ -6,7 +6,7 @@ DROPBOX_HOME=/home/trunks/Dropbox/
 DISPLAY=:0
 
 # Private variables
-TIMESTAMP=$(date +"%Y%m%d%H%M")
+TIMESTAMP=$(date +"%Y%m%d%H%M%S")
 SCREENSHOT_FILE="screenshot-${TIMESTAMP}.png"
 
 DROPBOX=$(which dropbox)
