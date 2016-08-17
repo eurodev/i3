@@ -13,8 +13,8 @@ set $w3 3: www
 set $w4 4: irc
 set $w5 5: files
 set $w6 6: skype
-set $w7 7: fullscreen
-set $w8 8
+set $w7 7: slack
+set $w8 8: fullscreen
 set $w9 9
 set $w10 10
 
@@ -25,7 +25,7 @@ workspace "3: www" output VGA1
 workspace "4: irc" output VGA1
 workspace "5: files" output VGA1
 workspace "6: skype" output LVDS1
-workspace 7 output VGA1
+workspace "7: slack" output LVDS1
 workspace 8 output VGA1
 workspace 9 output VGA1
 workspace 10 output VGA1
@@ -40,9 +40,11 @@ assign [class="Terminator"]       → $w2
 assign [class="google-chrome"]    → $w3
 assign [class="Navigator"]        → $w3
 assign [class="Nemo"]             → $w5
+assign [class="Slack"]            → $w7
 
 for_window [class="Eog"] floating enable
 for_window [class="Evince"] floating enable
+for_window [class="libreoffice"] floating enable
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -257,6 +259,7 @@ exec xchat &
 exec pidgin &
 exec skype &
 exec gedit &
+exec slack &
 
 # Dropbox daemon
 exec --no-startup-id dropbox start
