@@ -36,6 +36,7 @@ assign [title="XChat"]            → $w4
 assign [title="gedit"]            → $w5
 assign [title="Skype"]            → $w6
 assign [class="Pidgin"]           → $w1
+assign [class="telegram"]         → $w1
 assign [class="Terminator"]       → $w2
 assign [class="google-chrome"]    → $w3
 assign [class="Navigator"]        → $w3
@@ -258,7 +259,8 @@ exec google-chrome &
 exec terminator &
 exec terminator -e ssh-add &
 exec xchat &
-exec pidgin &
+#exec pidgin &
+exec telegram &
 exec skype &
 exec gedit &
 exec slack &
