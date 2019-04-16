@@ -19,16 +19,16 @@ set $w9 9
 set $w10 10
 
 # Set workspaces to an specific output
-workspace "1: chat" output LVDS1
-workspace "2: terminal" output VGA1
-workspace "3: www" output VGA1
-workspace "4: irc" output VGA1
-workspace "5: files" output VGA1
-workspace "6: skype" output LVDS1
-workspace "7: slack" output LVDS1
-workspace 8 output VGA1
-workspace 9 output VGA1
-workspace 10 output VGA1
+workspace "1: chat" output DP1
+workspace "2: terminal" output DP1
+workspace "3: www" output DP1
+workspace "4: irc" output DP1
+workspace "5: files" output DP1
+workspace "6: skype" output DP1
+workspace "7: slack" output DP1
+workspace 8 output DP1
+workspace 9 output DP1
+workspace 10 output DP1
 
 # Assign section
 # Use `xprop` (and maybe `xwininfo`) to determine class, title, etc.
@@ -41,6 +41,7 @@ assign [class="Terminator"]       → $w2
 assign [class="google-chrome"]    → $w3
 assign [class="Navigator"]        → $w3
 assign [class="Google-chrome"]    → $w3
+assign [class="Firefox"]          → $w3
 assign [class="Nemo"]             → $w5
 assign [class="Slack"]            → $w7
 
@@ -51,12 +52,13 @@ for_window [class="File-roller"] floating enable
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
+font pango:monospace 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -239,8 +241,8 @@ bindsym Print exec ~/.i3/screenshot.sh
 # network manager applet
 exec --no-startup-id nm-applet
 
-# cinnamon-sound-applet
-exec --no-startup-id cinnamon-sound-applet
+# pnmixer sound-applet
+exec --no-startup-id pnmixer
 
 # Launch mintupdate-launcher applet/daemon
 exec --no-startup-id mintupdate-launcher
@@ -256,12 +258,13 @@ exec --no-startup-id dunst -conf ~/.i3/dunstrc
 
 # Desktop applications
 exec google-chrome &
+#exec firefox &
 exec terminator &
 exec terminator -e ssh-add &
 exec xchat &
 #exec pidgin &
 exec telegram &
-#exec skype &
+#exec skypeforlinux &
 exec gedit &
 exec slack &
 
