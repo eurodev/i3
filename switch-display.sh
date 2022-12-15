@@ -46,14 +46,12 @@ function switch() {
         #${XRANDR} --output DP1 --off
         #${XRANDR} --output DP1 --left-of eDP1 --auto
         #${XRANDR} --output DP1 --primary
-        #xrandr --output DP1 --left-of eDP1 
-        #xrandr --output eDP1 --scale 0.5x0.5
-        xrandr --output DP-1 --primary
-        xrandr --output eDP-1 --off
-        #xrandr --output eDP-1 --left-of DP1
-        #xrandr --output eDP-1 --scale 0.5x0.5
+        ${XRANDR} --output HDMI-1 --primary
+        #${XRANDR} --output eDP-1 --off
+        ${XRANDR} --output eDP-1 --below HDMI-1
+        ${XRANDR} --output eDP-1 --scale 0.8x0.8
     else
-        xrandr --output eDP-1 --scale 0.5x0.5
+        ${XRANDR} --output eDP-1 --scale 0.8x0.8
     fi
 }
 

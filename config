@@ -14,26 +14,26 @@ set $w4 4: irc
 set $w5 5: files
 set $w6 6: skype
 set $w7 7: slack
-set $w8 8: fullscreen
+set $w8 8: scanner
 set $w9 9
 set $w10 10
 
 # Set workspaces to an specific output
-workspace "1: chat" output DP1
-workspace "2: terminal" output DP1
-workspace "3: www" output DP1
-workspace "4: irc" output DP1
-workspace "5: files" output DP1
-workspace "6: skype" output DP1
-workspace "7: slack" output DP1
-workspace 8 output DP1
-workspace 9 output DP1
-workspace 10 output DP1
+workspace "1: chat" output eDP-1
+workspace "2: terminal" output HDMI-1
+workspace "3: www" output HDMI-1
+workspace "4: irc" output eDP-1
+workspace "5: files" output HDMI-1
+workspace "6: skype" output HDMI-1
+workspace "7: slack" output eDP-1
+workspace "8: scanner" output HDMI-1
+workspace 9 output HDMI-1
+workspace 10 output HDMI-1
 
 # Assign section
 # Use `xprop` (and maybe `xwininfo`) to determine class, title, etc.
 assign [title="XChat"]            → $w4
-assign [title="gedit"]            → $w5
+assign [title="xed"]              → $w5
 assign [title="Skype"]            → $w6
 assign [class="Pidgin"]           → $w1
 assign [class="TelegramDesktop"]  → $w1
@@ -44,6 +44,7 @@ assign [class="Google-chrome"]    → $w3
 assign [class="Firefox"]          → $w3
 assign [class="Nemo"]             → $w5
 assign [class="Slack"]            → $w7
+assign [class="simple-scan"]      → $w8
 
 for_window [class="Eog"] floating enable
 for_window [class="Evince"] floating enable
@@ -152,10 +153,10 @@ bindsym $mod+Shift+9 move container to workspace $w9
 bindsym $mod+Shift+0 move container to workspace $w10
 
 # move focused container to another output
-bindsym Ctrl+Shift+Mod1+Right move workspace to output right
-bindsym Ctrl+Shift+Mod1+Left move workspace to output left
-bindsym Ctrl+Shift+Mod1+Up move workspace to output left
-bindsym Ctrl+Shift+Mod1+Down move workspace to output right
+bindsym $mod+Ctrl+Shift+Right move workspace to output right
+bindsym $mod+Ctrl+Shift+Left move workspace to output left
+bindsym $mod+Ctrl+Shift+Up move workspace to output left
+bindsym $mod+Ctrl+Shift+Down move workspace to output right
 
 # move focus to next/prev workspace
 bindsym Ctrl+Mod1+Right workspace next
@@ -248,7 +249,7 @@ exec --no-startup-id pnmixer
 exec --no-startup-id mintupdate-launcher
 
 # Lock screen after 10 minutes without any interaction
-exec --no-startup-id xautolock -time 10 -locker 'i3lock -dn -c 000000'
+exec --no-startup-id xautolock -time 10 -locker 'cinnamon-screensaver-command -a' &
 
 # Launch pulseaudio
 exec --no-startup-id pulseaudio --start
@@ -256,16 +257,19 @@ exec --no-startup-id pulseaudio --start
 # Launch dunst (notification daemon)
 exec --no-startup-id dunst -conf ~/.i3/dunstrc
 
+# Accelerate mouse
+exec --no-startup-id xinput --set-prop "Logitech Wireless Receiver Mouse" "libinput Accel Speed" 1.0
+
 # Desktop applications
 exec google-chrome &
-#exec firefox &
+#exec firefox -P default &
 exec terminator &
 exec terminator -e ssh-add &
-exec xchat &
+#exec xchat &
 #exec pidgin &
 exec telegram &
 #exec skypeforlinux &
-exec gedit &
+exec xed &
 exec slack &
 
 # Dropbox daemon
@@ -274,8 +278,14 @@ exec --no-startup-id dropbox start
 # Configure dual screen
 exec --no-startup-id ~/.i3/switch-display.sh
 
+# Connect bluetooth paired devices
+exec --no-startup-id ~/.i3/bluetooth.sh
+
 # Disable touchpad
 exec --no-startup-id ~/.i3/toggletouchpad off
+
+# Screensaver daemon
+exec --no-startup-id cinnamon-screensaver &
 
 ## Delayed AutoStart applications ##
 
@@ -284,4 +294,8 @@ exec --no-startup-id (sleep 4 && nemo --no-desktop) &
 
 # setting wallpaper
 #exec --no-startup-id xsetroot -solid "#000000"
-exec --no-startup-id (sleep 2 && nitrogen --set-tiled /home/trunks/Imágenes/Wallpapers/mariomaker_1920x1080.jpg) &
+exec --no-startup-id (sleep 2 && nitrogen --set-tiled /home/trunks/Imágenes/Wallpapers/Trunks2.png) &
+
+# Firefox AWS profiles
+#exec --no-startup-id (sleep 5 && firefox -P "AWS 1") &
+#exec --no-startup-id (sleep 5 && firefox -P "AWS 2") &
